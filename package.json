@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.4.x"
+  },
   "keywords": [
     "hydroponics"
   ],
@@ -13,6 +17,11 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.8.5",
-    "jade": "^1.5.0"
+    "jade": "^1.5.0",
+    "morgan": "^1.2.3",
+    "body-parser": "^1.6.5",
+    "stylus": "^0.48.1",
+    "mongoose": "^3.8.15",
+    "mongodb": "^1.4.8"
   }
 }
