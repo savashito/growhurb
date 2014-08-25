@@ -21,7 +21,7 @@ app.set('views',__dirname + '/server/views');
 app.set('view engine','jade');
 app.use(stylus.middleware(
 	{
-		src:__dirname+'public',
+		src:__dirname+'/public',
 		compile:compile
 	}
 ));
