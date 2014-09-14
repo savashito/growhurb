@@ -23,6 +23,7 @@ module.exports = function(app)
 	});
 	app.post('/retrieveemails',function(req,res){
 		app.mongoObj.retrieveEmails(function(emails){
+			console.log('emails',emails);
 			res.send({success:true,emails:emails })
 		});
 	});

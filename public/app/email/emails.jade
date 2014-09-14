@@ -1,4 +1,5 @@
 .container 
-	p Aqui van todos los correos
-	p {{emails}}
-	p {{cursos}}
+	p This are the emails
+	ul
+		li(ng-repeat='email in emails')
+			[{{$index+1}}] {{email.email}}

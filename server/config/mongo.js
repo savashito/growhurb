@@ -11,9 +11,12 @@ var mongoObj = {
 	},
 	retrieveEmails:function(callback){
 		var Email = this.db.collection('Email');
-		Email.findOne(function(err,emails){
+		Email.find(function(err,emails){
 			// console.log(err,emails.toArray());
-			callback(emails);
+			emails.toArray(function(error, result){
+				console.log('result',result);
+				callback(result);
+			})
 		});
 		// return [{email:'rod'},{email:'Tania'}];
 	}
