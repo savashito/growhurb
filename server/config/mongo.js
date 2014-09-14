@@ -8,7 +8,14 @@ var mongoObj = {
 		console.log('mongojs ', email);
 		var Email = this.db.collection('Email');
 		Email.insert({email:email},{ w: 0 });
-			
+	},
+	retrieveEmails:function(callback){
+		var Email = this.db.collection('Email');
+		Email.findOne(function(err,emails){
+			// console.log(err,emails.toArray());
+			callback(emails);
+		});
+		// return [{email:'rod'},{email:'Tania'}];
 	}
 };
 

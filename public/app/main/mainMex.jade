@@ -1,0 +1,26 @@
+.container 
+	// (ng-controller="mvMain")
+	.jumbotron
+		h1 Hurb 
+		p Urbano, fresco, verde y con actitud 
+		.large Hurb is a sleek hydroponic planter and your sophisticated life companion. If you lack a green thumb, have no fear. Hurb can take care of himself for the most part, but will let you know what he needs through his mood lighting and iOS app. You will appreciate his quick wit and way with members of the opposite sex... not to mention, the six herbs he can grow will go well with a variety of cocktails.
+		.row
+			.col-md-6
+				h4 Intrigado?
+				.hurb
+					p Sabia que lo estarías. Hurb estará dispnible proximamente a un precio razonable.Será bueno y chido. Di nos quien eres para más información. Pasa la voz y dile a tus amigos.
+				form
+					.form-group
+							input.form-control(type="text",placeholder='Email',ng-model="email")
+					button.btn.btn-primary(ng-click="summit(email)") Enviar
+			.col-md-6
+				img(src='images/urban_landscape2_jpg_440x330_crop_upscale_q85.jpg')
+			
+	
+		// img(src='images/plantfroplaet.jpg')
+	//	
+		.row
+			.col-md-6
+				div(ng-include="'/partials/main/featured-courses'")
+			.col-md-6
+				div(ng-include="'/partials/main/something'")

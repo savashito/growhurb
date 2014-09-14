@@ -21,6 +21,11 @@ module.exports = function(app)
 		app.mongoObj.addEmail(email);
 		res.send({success:true,email:email});
 	});
+	app.post('/retrieveemails',function(req,res){
+		app.mongoObj.retrieveEmails(function(emails){
+			res.send({success:true,emails:emails })
+		});
+	});
 	app.post('/login',auth.authenticate);
 	app.post('/logout',function (req,res){
 		console.log('userLog Out');
