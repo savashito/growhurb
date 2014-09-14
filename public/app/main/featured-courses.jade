@@ -1,0 +1,6 @@
+//
+	.panel.panel-primary
+		.panel-heading.text-center Featured Courses
+		.panel-body 
+			.row(ng-repeat="curso in cursos | filter:{featured:true}")
+				.col-md-12 {{curso.name +' '+ curso.featured}}

@@ -1,100 +1,65 @@
-var express = require('express'),
-	stylus  = require('stylus'),
-	logger  = require('morgan'),
-	// mongoose = require('mongoose'),
-	bodyParser = require('body-parser');
-	// Retrieve
-var MongoClient = require('mongodb').MongoClient;
+
+// Retrieve
 
 // USE NODE enviroment variable to determine if we are in production or development mode
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var env 		= process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var config 		= require('./server/config/config')[env];
+var app 		= require('./server/config/express')(config); // express();
 
-var app = express();
 
-// compile stylus
-function compile (str,path){
-	return stylus(str).set('filename',path);
-}
 
-// set server side views
-app.set('views',__dirname + '/server/views');
-app.set('view engine','jade');
-app.use(stylus.middleware(
-	{
-		src:__dirname+'/public',
-		compile:compile
+var mongoObj = require('./server/config/mongo')(config);
+
+var	passport  	= require('passport'),
+	localSt		= require('passport-local').Strategy; // how passport performs auth
+
+console.log('this should be second')
+
+passport.use(new localSt(function(name,psw,done){
+	var User = mongoObj.User;// collection('User');
+	// authenticate the user if it exists
+	User.findOne({userName:name},function(err,user){
+		if(user && User.m.authenticate(user,psw)){
+			return done(null,user);
+		}else{
+			return done(null,false);
+		}
+
+	})
+}));
+
+
+passport.serializeUser(function(user,done){
+	console.log('serializing user',user);
+	if(user){
+		done(null,user._id);
 	}
-));
-// connect to db
-// Retrieve
-var MongoClient = require('mongodb').MongoClient;
-/*
-mongoose.connect('mongodb://localhost/cloudFarm')
-var db = mongoose.connection;
+});
 
-db.on('error',function(error){
-	console.log('error en db ',error);
-})
-db.once('open',function(){
-	console.log('conection con la db cloudFarm');
-})
-*/
-//db.on('error',con)
-var mongoMsg;
-// Connect to the db
-var connectionStringMongo = env==='development'?"mongodb://localhost:27017/cloudFarm":'mongodb://rodrigosavage:rtopdfrtio@ds063869.mongolab.com:63869/cloudfarm';
-MongoClient.connect(connectionStringMongo, function(err, db) {
-  if(!err) {
-    console.log("We are connected");
-    var collection = db.collection('msg');
-    collection.findOne(function(err,messDoc){
-		console.log('err',err,'msg',messDoc);
-		mongoMsg = messDoc.msg;
+passport.deserializeUser(function(id,done){
+	var User = mongoObj.User;
+	console.log('deserializeUser user',id);
+	User.findOne({_id:id},function(err,user){
+		if(user){
+			return done(null,user);
+		}else{
+			return done (null ,false);
+		}
 	});
-  }
 });
 
-/*
-var msgSchema = mongoose.Schema({
-	msg: String
-});
 
-var Msg = mongoose.model('msg',msgSchema);
-*/
+var routes 		= require('./server/config/routes')(app);
 
-
-
-/*
-Msg.findOne().exec(function(err,messDoc){
-	console.log('err',err,'msg',messDoc);
-	// mongoMsg = messDoc.msg;
-})
-*/
-
-
-
-app.use(logger('dev'));
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
-// app.use(bodyParser());
-
-// serve static files
-app.use(express.static(__dirname+'/public'));
-
-
-// handle partials with jade
-app.get('/partials/:partialPath',function(req,res){
-	var partial = 'partials/' + req.params.partialPath;
-	console.log('renderenando part ',partial);
-	res.render(partial);
-});
-
-// all request are handle by this
-app.get('*',function (req,res){
-	console.log('renderiando index');
-	res.render('index',{mongoMsg:mongoMsg});
-}); // serve only index for all routes
+// serve only index for all routes
 // possible make it run on Horoku
-var port =  process.env.PORT || 3030;
+var port =  config.port;// process.env.PORT || 3030;
 app.listen(port);
+
+	// adding middleware
+	app.use(function(req, res, next){
+		console.log('waaaaa');
+		console.log('user is: ',req.user);
+		next();
+	});
 console.log('Escuhcando en puerto ',port);
