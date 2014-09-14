@@ -4,10 +4,10 @@ var MongoClient = require('mongodb').MongoClient
 	crypto = require('crypto');
 var mongoObj = {
 	MongoClient:MongoClient,db:undefined,collection:undefined,
-	addEmail:function(email){
-		console.log('mongojs ', email);
+	addEmail:function(obj){
+		console.log('mongojs ', obj);
 		var Email = this.db.collection('Email');
-		Email.insert({email:email},{ w: 0 });
+		Email.insert(obj,{ w: 0 });
 	},
 	retrieveEmails:function(callback){
 		var Email = this.db.collection('Email');

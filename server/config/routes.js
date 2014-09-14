@@ -15,11 +15,12 @@ module.exports = function(app)
 		res.render('index');
 	});
 	app.post('/summitemail',function(req,res){
-		var email = req.body.email;
-		console.log('req ',email);
+		// var email = req.body.email;
+		var obj = req.body;
+		console.log('req ',obj);
 		// query mongo db
-		app.mongoObj.addEmail(email);
-		res.send({success:true,email:email});
+		app.mongoObj.addEmail(obj);
+		res.send({success:true});
 	});
 	app.post('/retrieveemails',function(req,res){
 		app.mongoObj.retrieveEmails(function(emails){

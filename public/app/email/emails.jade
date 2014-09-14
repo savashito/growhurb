@@ -1,5 +1,5 @@
 .container 
 	p This are the emails
 	ul
-		li(ng-repeat='email in emails')
-			[{{$index+1}}] {{email.email}}
+		li(ng-repeat='obj in emails | orderBy:email')
+			[{{$index+1}}] {{obj.email}} {{obj.location}}
