@@ -2,7 +2,15 @@
 // Retrieve
 var MongoClient = require('mongodb').MongoClient
 	crypto = require('crypto');
-var mongoObj = {MongoClient:MongoClient,db:undefined,collection:undefined};
+var mongoObj = {
+	MongoClient:MongoClient,db:undefined,collection:undefined,
+	addEmail:function(email){
+		console.log('mongojs ', email);
+		var Email = this.db.collection('Email');
+		Email.insert({email:email},{ w: 0 });
+			
+	}
+};
 
 
 module.exports = function(config){
@@ -50,7 +58,8 @@ function successfullConnect(mongoObj){
 			{firstName:'Joe',lastName:'Doe',userName:'miau',salt,hashed_pwd}
 
 		*/
-	})
+	});
+
 }
 function addMethodsUser(User){
 	User.m = {

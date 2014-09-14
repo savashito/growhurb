@@ -15,6 +15,10 @@ footer {
 footer p {
   border-top: 1px solid #d7e0e2;
 }
+.hurb p {
+  font-size: 90%;
+  border-top: 1px solid #d7e0e2;
+}
 .navbar-form .form-group {
   margin-left: 10px;
 }

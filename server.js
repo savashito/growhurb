@@ -9,7 +9,7 @@ var app 		= require('./server/config/express')(config); // express();
 
 
 var mongoObj = require('./server/config/mongo')(config);
-
+app.mongoObj = mongoObj;
 var	passport  	= require('passport'),
 	localSt		= require('passport-local').Strategy; // how passport performs auth
 
