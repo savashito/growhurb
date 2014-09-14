@@ -1,13 +1,24 @@
 .container
 	.jumbotron
 		h1 Hurb 
-		p Urban fresh greens with an actitude
-		img(src='images/plantfroplaet.jpg')
+		p Urban fresh greens with an attitude
+		.row
+			.col-md-6
+				h4 Survey
+				form
+					.form-group
+						label Name:
+						input.form-control(placeholder="Name",ng-model="username")
+					.form-group
+						Email: input.form-control(type="password",placeholder='Password',ng-model="password")
+			.col-md-6
+				img(src='images/urban_landscape2_jpg_440x330_crop_upscale_q85.jpg')
+			
+
+		// img(src='images/plantfroplaet.jpg')
 	//	
 		.row
 			.col-md-6
 				div(ng-include="'/partials/main/featured-courses'")
 			.col-md-6
 				div(ng-include="'/partials/main/something'")
-
-h2 {{myVar}}
