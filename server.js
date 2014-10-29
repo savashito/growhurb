@@ -55,11 +55,11 @@ var routes 		= require('./server/config/routes')(app);
 // possible make it run on Horoku
 var port =  config.port;// process.env.PORT || 3030;
 app.listen(port);
-
+/*
 	// adding middleware
 	app.use(function(req, res, next){
 		console.log('waaaaa');
 		console.log('user is: ',req.user);
 		next();
-	});
+	});*/
 console.log('Escuhcando en puerto ',port);

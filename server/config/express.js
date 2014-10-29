@@ -24,6 +24,14 @@ module.exports = function(config){
 			compile:compile
 		}
 	));
+	/*
+	app.use(function(req, res, next){
+		var ip = req.headers["x-forwarded-for"] || req.connection.remoteAddres || req.socket.remoteAddress||
+		//console.log('waaaaa '+req.ip+ip,req.headers["x-forwarded-for"] , req.connection.remoteAddres);
+		//console.log('user is: ',req.user);
+		next();
+	})
+*/
 	app.use(logger('dev'));
 	// must use cookieParser before expressSession
 	app.use(cookieParser());
@@ -48,11 +56,14 @@ module.exports = function(config){
 	// serve static files
 	app.use(express.static(__dirname+'/public'));
 
-	/*app.use(function(req, res, next){
-		console.log('waaaaa');
-		console.log('user is: ',req.user);
+	app.use(function(req, res, next){
+		// console.log('ip: ',req.connection)
+		// var ip = req.headers["x-forwarded-for"] || req.connection.remoteAddres;
+		//console.log('waaaaa '+ip,req.headers["x-forwarded-for"] , req.connection.remoteAddres);
+		//console.log('user is: ',req.user);
+		console.log('ip ',req.ip,req.ips);
 		next();
-	})*/
+	})
 	console.log('this should be first')
 	return app;
 }
