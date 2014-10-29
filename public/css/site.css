@@ -31,8 +31,3 @@ footer p {
 .toast-success {
   background-color: #13987e;
 }
-
-input.ng-dirty.ng-invalid {
-  border: solid 1px red;
-  background-color: pink;
-}
