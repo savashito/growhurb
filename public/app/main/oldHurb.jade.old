@@ -1,0 +1,31 @@
+.container 
+	// (ng-controller="mvMain")
+	.jumbotron
+		h1 Basil 
+		img(src='images/stopmurder.png')
+
+		/*
+		
+		p Urban fresh greens with an attitudei
+		.large Hurb is a sleek hydroponic planter and your sophisticated life companion. If you lack a green thumb, have no fear. Hurb can take care of himself for the most part, but will let you know what he needs through his mood lighting and mobile app. You will appreciate his quick wit and way with members of the opposite sex... not to mention, the six herbs he can grow will go well with a variety of cocktails.
+		.row
+			.col-md-6
+				h4 Intrigued?
+				.hurb
+					p I thought you may be. Hurb will be available soon for a reasonable sum. Be a good chap and pass your contact information and you will be the first to know.
+				form
+					.form-group
+							input.form-control(type="email",placeholder='Email',ng-model="email")
+					button.btn.btn-primary(ng-click="summit(email,'USA')") Submit
+			.col-md-6
+				
+		*/
+			
+	
+		// img(src='images/plantfroplaet.jpg')
+	//	
+		.row
+			.col-md-6
+				div(ng-include="'/partials/main/featured-courses'")
+			.col-md-6
+				div(ng-include="'/partials/main/something'")

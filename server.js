@@ -49,7 +49,7 @@ passport.deserializeUser(function(id,done){
 });
 
 
-var routes 		= require('./server/config/routes')(app);
+var routes = require('./server/config/routes')(app);
 
 // serve only index for all routes
 // possible make it run on Horoku

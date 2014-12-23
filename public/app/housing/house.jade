@@ -1,0 +1,16 @@
+.container 
+	h1 Welcome to the Hacker hut!
+	p This is how much you should pay for rent:
+	ul
+		li(ng-repeat='person in roommates')
+			{{person.name}} - {{person.rent}} {{services.internet}}
+
+	h4 Total price per service
+
+		//li(ng-repeat='obj in emails | orderBy:email')
+		//	[{{$index+1}}] {{obj.email}} {{obj.location}}
+
+	h4 Price per room
+
+	h5(ng-repeat='room in rooms')
+		{{room.size}} room - {{room.rent}}

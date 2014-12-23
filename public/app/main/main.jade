@@ -1,34 +1,18 @@
 .container 
-	// (ng-controller="mvMain")
-	// .jumbotron
-	img(src='images/stopmurder1.png')
-	p
-	h4 Buying or consuming illegal drugs is equivalent to funding murder!
-	h4 Inform your friends! Stop murder now!
-	b Mexican drug cartels make up to $ 29 billion dolars annually from U.S. drug sales!
-	.row
-		.col-md-6
+	.logo
+		img.img-circle(src="images/Hurb.png",width='100',alt='Hurb Logo')
+	.row.centered
+		.col-lg8.col-lg-offset-2.w
+			h1 Say Hi to Hurb
+	.container
+		.row.w.centered
 			br
-			b Sign up for more information on how to help
-			.hurb
-				
-			form
-				.form-group
-						input.form-control(type="email",placeholder='Email',ng-model="email")
-				button.btn.btn-primary(ng-click="summit(email,'USA')") Submit
-		.col-md-6
+			.col-lg-10.col-lg-offset-1
+			p Hurb is a sleek hydroponic planter and your sophisticated life companion. If you lack a green thumb, have no fear. Hurb can take care of himself for the most part, but will let you know what he needs through his mood lighting and mobile app. You will appreciate his quick wit and friendly personality... not to mention, the six herbs he can grow will go well with a variety of cocktails.
 
-	a http://www.cnn.com/2013/09/02/world/americas/mexico-drug-war-fast-facts/
-	br
-	a http://www.excelsior.com.mx/opinion/martin-moreno/2014/07/29/973354
-	br 
-	a https://news.vice.com/article/legal-pot-in-the-us-is-crippling-mexican-cartels
-	br
-	a http://en.wikipedia.org/wiki/2014_Iguala_mass_kidnapping
-	br
-	a http://america.aljazeera.com/articles/2014/3/17/drug-traffickingasmallpartofmexicancartelsincome.html
-	br
-	a http://www.bbc.com/news/world-latin-america-29732720
-	br
-	a http://www.thedailybeast.com/articles/2014/10/29/mexico-s-first-lady-of-murder-is-on-the-lam.html
 
+.row.centered
+	.col-lg-8.col-lg-offset-2.w.tooltip-demo
+		img(src="images/comingsoon.png",width="250")
+
+script(type="text/javascript",src="/app/main/assets.js")

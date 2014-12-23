@@ -1,0 +1,1 @@
+ $.backstretch("images/hurbbg3.jpg", {speed: 500});
