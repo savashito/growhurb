@@ -1,16 +1,23 @@
 .container 
 	h1 Welcome to the Hacker hut!
 	p This is how much you should pay for rent:
-	ul
-		li(ng-repeat='person in roommates')
-			{{person.name}} - {{person.rent}} {{services.internet}}
 
-	h4 Total price per service
+	table.table.table-hover.table-bordered
+		thead
+			th Name
+			th Rent
+			th(ng-repeat='(serviceName,service) in services') {{serviceName}}
+		tbody
+			tr(ng-repeat='person in roommates')
+				td {{person.name}} 
+				td(ng-class="{'bg-danger': !servicesPaid[person.name].rent, 'bg-success': servicesPaid[person.name].rent }") {{person.rent}}
+				td(ng-class="{'bg-danger': !servicesPaid[person.name][serviceName], 'bg-success': servicesPaid[person.name][serviceName] }",ng-repeat='(serviceName, service) in services', ) {{service.unitPrice}}
+			
 
-		//li(ng-repeat='obj in emails | orderBy:email')
-		//	[{{$index+1}}] {{obj.email}} {{obj.location}}
+
 
 	h4 Price per room
 
 	h5(ng-repeat='room in rooms')
 		{{room.size}} room - {{room.rent}}
+

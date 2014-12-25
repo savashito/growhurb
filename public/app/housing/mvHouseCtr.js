@@ -37,12 +37,21 @@ angular.module('app').controller('mvHouseCtr',function($scope,$http,mvNotifier){
 		electric:{price:80.0},
 		gas:{price:43.0}
 	};
+	$scope.servicesPaid = {
+		'Rodrigo': {rent:false,internet:true,water:false,electric:false,gas:false},
+		'Charles': {rent:true,internet:false,water:true,electric:false,gas:true},
+		'Jorge'  : {rent:false,internet:false,water:false,electric:true,gas:false}
+	}
+// servicesP said[person.name].rent
+
 	var rooms = $scope.rooms;
 	totalOccupants = 0;
 	// find the total number of occupants
-	for (var i = rooms.length - 1; i >= 0; i--) {
-		totalOccupants += rooms[i].occupants;
-	};
+	for (roomName in rooms){
+		room = rooms[roomName];
+		totalOccupants += room.occupants;
+	}
+	console.log(totalOccupants);
 	// calculate each humans rent
 
 	
@@ -54,18 +63,25 @@ angular.module('app').controller('mvHouseCtr',function($scope,$http,mvNotifier){
 		roommate.rent = room.rent/room.occupants;
 	};
 	var services = $scope.services;
-	services = $(services);
-	console.log(services);
-	services.each(function(service){
+	// services = $(services);
+	console.log(totalOccupants);
+	for (var serviceKey in services){
+		service = services[serviceKey];
+		service.unitPrice = service.price/totalOccupants;	
+		console.log(service.price);
+	}
+	/*
+	services.forEach(function(service){
 		service.unitPrice = service.price/totalOccupants;
+
 		console.log(service.unitPrice);
-	})
+	})*/
 	// console.log(services.length );
 	// for (var i = services.length - 1; i >= 0; i--) {
 	// 	service = services[i];
 	// 	service.unitPrice = service.price/totalOccupants;
 	// 	console.log(sevice);
 	// };
-	console.log(services);
+	// console.log(services);
 
 });
