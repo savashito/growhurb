@@ -1,16 +1,17 @@
 angular.module('app').controller('mvHouseCtr',function($scope,$http,mvNotifier){
 	// fetch data
 	$scope.roommates = [
-		{name:'Rodrigo',livesIn:'bigRoomSouth',lease:{start:new Date("October 13, 2014 11:13:00"),end:new Date("October 13, 2014 11:13:00")}},
+		{name:'Rodrigo',livesIn:'MediumRoom',lease:{start:new Date("October 13, 2014 11:13:00"),end:new Date("October 13, 2014 11:13:00")}},
 		{name:'Charles',livesIn:'bigRoomSouth',date:new Date("October 13, 2014 11:13:00")},
-		{name:'Jorge'  ,livesIn:'tinyRoom',date:new Date("October 13, 2014 11:13:00")}
+		{name:'Jorge'  ,livesIn:'tinyRoom',date:new Date("October 13, 2014 11:13:00")},
+		{name:'X'  ,livesIn:'bigRoomNorth',date:new Date("October 13, 2014 11:13:00")}
 		];
 	$scope.rooms = {
 		bigRoomSouth: {
 			size:'Big',
 			description: 'Beautiful room with two windows, and huge closet',
 			rent: 325.0,
-			occupants:2
+			occupants:1
 		},
 		bigRoomNorth: {
 			size:'Big',
@@ -32,15 +33,16 @@ angular.module('app').controller('mvHouseCtr',function($scope,$http,mvNotifier){
 		}
 	}
 	$scope.services = {
-		internet:{price:30.00},
-		water:{price:27.0},
-		electric:{price:80.0},
-		gas:{price:43.0}
+		internet:{price:35.77},
+		water:{price:0.0},
+		electric:{price:0.0},
+		gas:{price:80.0}
 	};
 	$scope.servicesPaid = {
-		'Rodrigo': {rent:false,internet:true,water:false,electric:false,gas:false},
-		'Charles': {rent:true,internet:false,water:true,electric:false,gas:true},
-		'Jorge'  : {rent:false,internet:false,water:false,electric:true,gas:false}
+		'Rodrigo': {rent:true,internet:true,water:false,electric:false,gas:false},
+		'Charles': {rent:true,internet:false,water:false,electric:false,gas:false},
+		'X': {rent:true,internet:false,water:false,electric:false,gas:false},
+		'Jorge'  : {rent:false,internet:false,water:false,electric:false,gas:false}
 	}
 // servicesP said[person.name].rent
 
@@ -67,7 +69,7 @@ angular.module('app').controller('mvHouseCtr',function($scope,$http,mvNotifier){
 	console.log(totalOccupants);
 	for (var serviceKey in services){
 		service = services[serviceKey];
-		service.unitPrice = service.price/totalOccupants;	
+		service.unitPrice = ((service.price+0.01)/totalOccupants).toFixed(2);	
 		console.log(service.price);
 	}
 	/*
