@@ -6,13 +6,21 @@
 		thead
 			th Name
 			th Rent
-			th(ng-repeat='(serviceName,service) in services') {{serviceName}}
+			th(ng-repeat='(serviceName,service) in services') {{serviceName}}, due  {{service.due.toDateString()}}
 		tbody
-			tr(ng-repeat='person in roommates')
+			tr(ng-repeat='person in roommates | orderBy:name')
 				td {{person.name}} 
 				td(ng-class="{'bg-danger': !servicesPaid[person.name].rent, 'bg-success': servicesPaid[person.name].rent }") {{person.rent}}
-				td(ng-class="{'bg-danger': !servicesPaid[person.name][serviceName], 'bg-success': servicesPaid[person.name][serviceName] }",ng-repeat='(serviceName, service) in services', ) {{service.unitPrice}}
+				td(ng-class="{'bg-danger': !servicesPaid[person.name][serviceName], 'bg-success': servicesPaid[person.name][serviceName] }",ng-repeat='(serviceName, service) in services', ) {{service.unitPrice}} 
 			
+	h4 How to pay?
+	p Deposit money directly using sure pay.
+	ul Wellsfargo
+		li rodrigosavage@email.arizona.edu
+		li rodrigosavage@gmail.com
+		li 805-468-5883
+	ul Chase
+		li 
 
 
 

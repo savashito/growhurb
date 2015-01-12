@@ -8,13 +8,15 @@ var app 		= require('./server/config/express')(config); // express();
 
 
 
-var mongoObj = require('./server/config/mongo')(config);
+// var mongoObj = require('./server/config/mongo')(config);
+var mongoObj = require('./server/config/mongoose')(config);
 app.mongoObj = mongoObj;
 var	passport  	= require('passport'),
 	localSt		= require('passport-local').Strategy; // how passport performs auth
 
 console.log('this should be second')
 
+/*
 passport.use(new localSt(function(name,psw,done){
 	var User = mongoObj.User;// collection('User');
 	// authenticate the user if it exists
@@ -47,9 +49,10 @@ passport.deserializeUser(function(id,done){
 		}
 	});
 });
-
+*/
 
 var routes = require('./server/config/routes')(app);
+var api = require('./server/config/api')(app,config);
 
 // serve only index for all routes
 // possible make it run on Horoku

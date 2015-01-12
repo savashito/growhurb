@@ -7,7 +7,7 @@ module.exports = {
 		port: process.env.PORT || 3030
 	},
 	production:{
-		db:'mongodb://rodrigosavage:rtopdfrtio@ds063869.mongolab.com:63869/cloudfarm',
+		db:'mongodb://rodrigosavage:rtopdfrtio@ds063869.mongolab.com:63869/cloudFarm',
 		__dirname:__dirname,
 		port: process.env.PORT || 80
 	}

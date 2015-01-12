@@ -4,7 +4,7 @@ angular.module('app').controller('mvHouseCtr',function($scope,$http,mvNotifier){
 		{name:'Rodrigo',livesIn:'MediumRoom',lease:{start:new Date("October 13, 2014 11:13:00"),end:new Date("October 13, 2014 11:13:00")}},
 		{name:'Charles',livesIn:'bigRoomSouth',date:new Date("October 13, 2014 11:13:00")},
 		{name:'Jorge'  ,livesIn:'tinyRoom',date:new Date("October 13, 2014 11:13:00")},
-		{name:'X'  ,livesIn:'bigRoomNorth',date:new Date("October 13, 2014 11:13:00")}
+		{name:'Sowan'  ,livesIn:'bigRoomNorth',date:new Date("October 13, 2014 11:13:00")}
 		];
 	$scope.rooms = {
 		bigRoomSouth: {
@@ -33,16 +33,17 @@ angular.module('app').controller('mvHouseCtr',function($scope,$http,mvNotifier){
 		}
 	}
 	$scope.services = {
-		internet:{price:35.77},
+		internet:{price:35.77,due: new Date(2015, 0, 15) },
 		water:{price:0.0},
 		electric:{price:0.0},
-		gas:{price:80.0}
+		gas:{price:0.0}
 	};
 	$scope.servicesPaid = {
 		'Rodrigo': {rent:true,internet:true,water:false,electric:false,gas:false},
 		'Charles': {rent:true,internet:false,water:false,electric:false,gas:false},
-		'X': {rent:true,internet:false,water:false,electric:false,gas:false},
-		'Jorge'  : {rent:false,internet:false,water:false,electric:false,gas:false}
+		'Sowan':   {rent:true,internet:false,water:false,electric:false,gas:false},
+		'Jorge'  : {rent:true,internet:false,water:false,electric:false,gas:false},
+		rent:true,gas:true,internet:false
 	}
 // servicesP said[person.name].rent
 

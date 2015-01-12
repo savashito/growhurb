@@ -30,7 +30,12 @@ p {
 .centered {
     text-align: center;
 }
-
+.navbar-form .form-group {
+  margin-left: 10px;
+}
+.navbar-form button {
+  margin-left: 10px;
+}
 /* Links */
 a {
     color: #f39c12;

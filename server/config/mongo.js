@@ -54,9 +54,9 @@ function successfullConnect(mongoObj){
 	mongoObj.User = User;
 	console.log('conecction exitossa');
 	User.findOne({},function(err,users){
-		// console.log('err',err,'users,',users);
+		console.log('err',err,'users,',users);
 		if(users === null){
-
+			console.log('creando usuia');
 			var salt=createSalt();
 			// insert test users :)
 			User.insert({firstName:'Joe',lastName:'Doe',userName:'miau',salt:salt,hashed_pwd:hashPwd(salt,'miau')},{ w: 0 });
