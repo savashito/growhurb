@@ -36,14 +36,15 @@ angular.module('app').controller('mvHouseCtr',function($scope,$http,mvNotifier){
 		internet:{price:35.77,due: new Date(2015, 0, 15) },
 		water:{price:0.0},
 		electric:{price:0.0},
-		gas:{price:0.0}
+		gas:{price:65.98,due: new Date(2015, 0, 23) }
 	};
 	$scope.servicesPaid = {
 		'Rodrigo': {rent:true,internet:true,water:false,electric:false,gas:false},
 		'Charles': {rent:true,internet:false,water:false,electric:false,gas:false},
-		'Sowan':   {rent:true,internet:false,water:false,electric:false,gas:false},
-		'Jorge'  : {rent:true,internet:false,water:false,electric:false,gas:false},
-		rent:true,gas:true,internet:false
+		'Sowan':   {rent:true,internet:true,water:false,electric:false,gas:false},
+		'Jorge'  : {rent:true,internet:true,water:false,electric:false,gas:false}
+		// ,
+		// rent:true,gas:true,internet:false
 	}
 // servicesP said[person.name].rent
 
